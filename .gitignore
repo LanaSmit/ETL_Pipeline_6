@@ -1,0 +1,16 @@
+# Ignore Docker & database volumes
+pgadmin_data/
+postgres_data/
+
+# Python cache & environment
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# OS files
+.DS_Store
+
+# Env files
+.env
