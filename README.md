@@ -30,14 +30,14 @@ nano .env
 
 Inside the .env file paste the follwoing code:
 ```bash
-POSTGRES_USER=lana
-POSTGRES_PASSWORD=1234
-POSTGRES_DB=ny_taxi
+POSTGRES_USER=your_postgres_user
+POSTGRES_PASSWORD=your_postgres_password
+POSTGRES_DB=your_database_name
 
-PGADMIN_DEFAULT_EMAIL=admin@admin.com
-PGADMIN_DEFAULT_PASSWORD=admin
+PGADMIN_DEFAULT_EMAIL=your_pgadmin_email
+PGADMIN_DEFAULT_PASSWORD=your_pgadmin_password
 
-LOCAL_PATH=/home/lana/ETL_Pipeline_6
+LOCAL_PATH=/path/to/your/project
 ```
 Save & exit.
 ## 4. Start Postgres + pgAdmin (Docker Compose)
