@@ -1,15 +1,5 @@
 # Pipeline_Docker
-A containerized data pipeline built with Docker Desktop, PostgreSQL, and WSL2 (Ubuntu for Windows).
-It extracts data from parquet file and loads it into a PostgreSQL database using Python scripts.
-All sensitive or personal configuration details are managed securely through a .env file (excluded from version control).
-The setup uses Docker Compose for container management and runs smoothly on Windows via WSL2 integration.
-
-# ETL Pipeline  
-**Docker + Postgres + WSL2 | Parquet → Postgres ETL Pipeline**
-
-This project loads NYC Green Taxi **Parquet** data into a **Postgres** database using Docker containers on **WSL Ubuntu**. The ingestion is handled through a Python script inside a Docker image.
-
----
+This project loads NYC Green Taxi **Parquet** data into a **Postgres** database using Docker containers on **WSL Ubuntu**. The ingestion is handled through a Python script inside a Docker image. All sensitive or personal configuration details are managed securely through a .env file (excluded from version control).
 
 ## 1. Prerequisites
 
@@ -47,6 +37,7 @@ PGADMIN_DEFAULT_PASSWORD=admin
 
 LOCAL_PATH=/home/lana/ETL_Pipeline_6
 ```
+Save & exit.
 ## 4. Start Postgres + pgAdmin (Docker Compose)
 
 Start the containers:
@@ -85,6 +76,8 @@ docker build -t parquet_ingest:001 .
 ```
 
 ## 7. Run the ETL Pipeline (Ingestion Container)
+
+This container converts the Parquet file to a compressed CSV and inserts it into Postgres in chunks:
 ```bash
 docker run -it \
   --network=etl-pipeline_default \
@@ -104,16 +97,18 @@ docker network ls
 ## 8. Validate Successful Ingestion
 
 Inside pgAdmin, run: 
-
 ```bash
 SELECT COUNT(*) FROM green_trip_data;
 ```
 If rows appear, the ingestion succeeded.
 
 ## 9. Stopping the Environment
+
+Stop the containers:
 ```bash
 docker compose down
 ```
+Stop + remove all volumes:
 ```bash
 docker compose down -v
 ```
